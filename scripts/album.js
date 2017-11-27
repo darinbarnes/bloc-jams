@@ -13,7 +13,7 @@ var albumPicasso = {
      ]
  };
 
- var albumMarconi = {
+var albumMarconi = {
     title: 'The Telephone',
     artist: 'Guglielmo Marconi',
     label: 'EM',
@@ -25,6 +25,21 @@ var albumPicasso = {
         { title: 'Fits in your pocket', duration: '3:21'},
         { title: 'Can you hear me now?', duration: '3:14' },
         { title: 'Wrong phone number', duration: '2:15'}
+    ]
+};
+
+var albumNational = {
+    title: 'Sleep Well Beast',
+    artist: 'The National',
+    label: '4AD',
+    year: '2017',
+    albumArtUrl: 'assets/images/album_covers/22.png',
+    songs: [
+        { title: 'Nobody Else Will Be There', duration: '4:39' },
+        { title: 'Day I Die', duration: '4:31' },
+        { title: 'Walk It Back', duration: '5:59'},
+        { title: 'The System Only Dreams in Total Darkness?', duration: '3:56' },
+        { title: 'Born to Beg', duration: '4:22'}
     ]
 };
 
@@ -59,6 +74,17 @@ var setCurrentAlbum = function(album) {
   }
 };
 
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+
 window.onload = function() {
   setCurrentAlbum(albumPicasso);
+  var albums = [albumPicasso, albumMarconi, albumNational];
+  var index = 1;
+  albumImage.addEventListener("click", function(event) {
+    setCurrentAlbum(albums[index]);
+    index++;
+    if (index == albums.length) {
+      index = 0;
+    }
+  });
 };
